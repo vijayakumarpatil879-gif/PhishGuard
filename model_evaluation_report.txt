@@ -1,0 +1,67 @@
+============================================================
+PHISHING URL DETECTION - MODEL EVALUATION REPORT
+============================================================
+
+DATASET INFORMATION
+------------------------------------------------------------
+Dataset samples     : 81
+Number of features  : 17
+Dataset type        : Educational
+
+TRAIN / TEST SPLIT
+------------------------------------------------------------
+Training samples    : 64
+Testing samples     : 17
+Test size           : 20%
+
+MODEL
+------------------------------------------------------------
+Algorithm           : Random Forest
+Estimators          : 100
+Random state        : 42
+
+MODEL PERFORMANCE
+------------------------------------------------------------
+Accuracy            : 100.00%
+Precision           : 100.00%
+Recall              : 100.00%
+F1 Score            : 100.00%
+
+CONFUSION MATRIX
+------------------------------------------------------------
+                 Predicted
+              Legit  Phishing
+Actual Legit      8        0
+Actual Phishing   0        9
+
+True Negatives  (TN): 8
+False Positives (FP): 0
+False Negatives (FN): 0
+True Positives  (TP): 9
+
+CLASSIFICATION REPORT
+------------------------------------------------------------
+              precision    recall  f1-score   support
+
+  Legitimate       1.00      1.00      1.00         8
+    Phishing       1.00      1.00      1.00         9
+
+    accuracy                           1.00        17
+   macro avg       1.00      1.00      1.00        17
+weighted avg       1.00      1.00      1.00        17
+
+INTERPRETATION
+------------------------------------------------------------
+No phishing URLs were missed in this test split.
+No legitimate URLs were incorrectly flagged in this test split.
+
+IMPORTANT NOTE
+------------------------------------------------------------
+This evaluation uses an 80/20 train/test split.
+The test URLs were not used during training.
+The dataset is small and educational.
+These results should NOT be interpreted as real-world phishing detection accuracy.
+
+============================================================
+V3.8 STEP 3 COMPLETE
+============================================================

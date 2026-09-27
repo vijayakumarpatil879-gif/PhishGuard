@@ -1,0 +1,33 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+scan_history.db
+*.db
+
+*.stable
+
+.env
+.env.*
+
+.DS_Store
+
+# Old development backups
+app.py.backup*
+app.py.before_*
+app.py.broken
+app.py.working_backup
+app_backup.py
+app_before_*
+category_classifier.py.backup*
+analyzer_before_*
+
+# Old frontend backups
+templates/*.backup
+templates/*_backup*.html
+templates/index_before_*.html
+templates/index_*.html~
+static/*_before_*.css
+templates/*.backup*

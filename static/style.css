@@ -1,0 +1,695 @@
+/* =========================================================
+   PHISHGUARD - PREMIUM CYBERSECURITY DASHBOARD
+   Version: Premium UI v1
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #07111f;
+    --bg-secondary: #0b1728;
+    --panel: #0d1b2e;
+    --panel-light: #122238;
+    --border: #1d3552;
+
+    --text: #f3f7ff;
+    --muted: #91a4bd;
+
+    --blue: #1683ff;
+    --blue-dark: #0969d8;
+
+    --green: #19d879;
+    --green-dark: #0b8f4d;
+
+    --red: #ff5b61;
+    --red-dark: #a91f2b;
+
+    --yellow: #ffd43b;
+    --purple: #a855f7;
+
+    --shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 75% 10%, rgba(0, 112, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(72, 34, 180, 0.08), transparent 30%),
+        var(--bg);
+
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+    width: min(1450px, 94%);
+    margin: 0 auto;
+    padding: 28px 0 50px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    background:
+        linear-gradient(135deg, rgba(13, 29, 50, 0.98), rgba(7, 20, 37, 0.98));
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    padding: 28px 34px;
+    margin-bottom: 22px;
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+
+    right: -130px;
+    top: -180px;
+
+    background: rgba(22, 131, 255, 0.10);
+    border-radius: 50%;
+}
+
+.header h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 7px;
+}
+
+.header p {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 34, 55, 0.98),
+            rgba(10, 24, 41, 0.98)
+        );
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    padding: 24px;
+    margin-bottom: 20px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card:hover {
+    border-color: rgba(22, 131, 255, 0.55);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card h2 {
+    color: var(--text);
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+/* =========================================================
+   URL SCANNER
+   ========================================================= */
+
+input[type="text"],
+input[type="url"] {
+    width: calc(100% - 130px);
+
+    background: #081526;
+    color: var(--text);
+
+    border: 1px solid #35516f;
+    border-radius: 10px;
+
+    padding: 15px 17px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(22, 131, 255, 0.14);
+}
+
+input::placeholder {
+    color: #70849e;
+}
+
+button {
+    background: linear-gradient(135deg, var(--blue), #0067dc);
+
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 15px 25px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(22, 131, 255, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   RESULT / RISK
+   ========================================================= */
+
+.result {
+    border-radius: 14px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.result h2 {
+    margin-bottom: 10px;
+}
+
+.low,
+.legitimate,
+.safe {
+    background: rgba(25, 216, 121, 0.09);
+    border: 1px solid rgba(25, 216, 121, 0.45);
+}
+
+.medium {
+    background: rgba(255, 212, 59, 0.08);
+    border: 1px solid rgba(255, 212, 59, 0.45);
+}
+
+.high,
+.phishing {
+    background: rgba(255, 91, 97, 0.09);
+    border: 1px solid rgba(255, 91, 97, 0.45);
+}
+
+/* =========================================================
+   RISK SCORE
+   ========================================================= */
+
+.risk-score {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.risk-low {
+    color: var(--green);
+}
+
+.risk-medium {
+    color: var(--yellow);
+}
+
+.risk-high {
+    color: var(--red);
+}
+
+/* =========================================================
+   ML PREDICTION
+   ========================================================= */
+
+.ml-result {
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+
+    border-radius: 14px;
+    padding: 22px;
+
+    margin-top: 20px;
+}
+
+.ml-result h2 {
+    color: #c084fc;
+}
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.progress {
+    height: 9px;
+    background: #1b2b41;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 8px 0 18px;
+    width: 100%;
+}
+
+.progress-bar {
+    display: block;
+    height: 100%;
+    min-width: 0;
+    max-width: 100%;
+    background: linear-gradient(
+        90deg,
+        #1683ff,
+        #6d5dfc
+    );
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+/* =========================================================
+   FEATURE IMPORTANCE
+   ========================================================= */
+
+.feature {
+    margin: 16px 0;
+}
+
+.feature-name {
+    display: flex;
+    justify-content: space-between;
+
+    color: #b9c9dc;
+
+    margin-bottom: 7px;
+}
+
+.feature-value {
+    color: var(--blue);
+    font-weight: 700;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+}
+
+thead {
+    background: #12243a;
+}
+
+th {
+    text-align: left;
+
+    color: #a9bdd4;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    padding: 15px;
+}
+
+td {
+    padding: 14px 15px;
+
+    color: #d8e3ef;
+
+    border-top: 1px solid #1c3048;
+
+    font-size: 14px;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(22, 131, 255, 0.06);
+}
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge {
+    display: inline-block;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+}
+
+.badge-low,
+.badge-legitimate {
+    color: #58f09e;
+    background: rgba(25, 216, 121, 0.12);
+    border: 1px solid rgba(25, 216, 121, 0.3);
+}
+
+.badge-medium {
+    color: #ffe27a;
+    background: rgba(255, 212, 59, 0.12);
+    border: 1px solid rgba(255, 212, 59, 0.3);
+}
+
+.badge-high,
+.badge-phishing {
+    color: #ff8589;
+    background: rgba(255, 91, 97, 0.12);
+    border: 1px solid rgba(255, 91, 97, 0.3);
+}
+
+/* =========================================================
+   URL INFORMATION
+   ========================================================= */
+
+.url-info {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+.info-item {
+    background: #0a182a;
+
+    border: 1px solid #1c324c;
+
+    border-radius: 10px;
+
+    padding: 15px;
+}
+
+.info-item strong {
+    display: block;
+
+    color: #8ea5c0;
+
+    font-size: 13px;
+
+    margin-bottom: 4px;
+}
+
+.info-item span {
+    color: #e7eff8;
+    word-break: break-word;
+}
+
+/* =========================================================
+   METRIC CARDS
+   ========================================================= */
+
+.metrics {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.metric-card {
+    background:
+        linear-gradient(
+            145deg,
+            #10243b,
+            #0b192b
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 22px;
+
+    box-shadow: var(--shadow);
+}
+
+.metric-card .label {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.metric-card .value {
+    color: var(--text);
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    margin-top: 6px;
+}
+
+.metric-card.blue {
+    border-left: 4px solid var(--blue);
+}
+
+.metric-card.green {
+    border-left: 4px solid var(--green);
+}
+
+.metric-card.red {
+    border-left: 4px solid var(--red);
+}
+
+.metric-card.purple {
+    border-left: 4px solid var(--purple);
+}
+
+/* =========================================================
+   TWO COLUMN LAYOUT
+   ========================================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 20px;
+}
+
+/* =========================================================
+   MODEL PERFORMANCE
+   ========================================================= */
+
+.performance-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+.performance-card {
+    background: #0a182a;
+
+    border: 1px solid #203750;
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    text-align: center;
+}
+
+.performance-card .value {
+    font-size: 25px;
+    font-weight: 800;
+
+    margin-top: 5px;
+}
+
+.performance-card .label {
+    color: #8ea5bf;
+    font-size: 13px;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error {
+    background: rgba(255, 91, 97, 0.1);
+
+    border: 1px solid rgba(255, 91, 97, 0.4);
+
+    color: #ff9296;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-top: 15px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    text-align: center;
+
+    color: #657d98;
+
+    font-size: 13px;
+
+    margin-top: 30px;
+
+    padding: 20px;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: #45a3ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #07111f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #233c58;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #315477;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 94%;
+        padding-top: 15px;
+    }
+
+    .header {
+        padding: 22px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .url-info {
+        grid-template-columns: 1fr;
+    }
+
+    input[type="text"],
+    input[type="url"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
